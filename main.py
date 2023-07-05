@@ -60,6 +60,7 @@ alphabet = [
 # e.g. start_text = "meet me at 3"
 # end_text = "•••• •• •• 3"
 
+print(logo)
 # Prompt user for cipher direction, text to encode/decode, and shift amount
 direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message:\n").lower()
