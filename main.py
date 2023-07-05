@@ -72,18 +72,30 @@ def caesar(direction, text, shift):
     print(f"The {direction}d text is {output}.")
 
 
+def clear_console():
+    print("\033c", end="")
+
+
+# Clear console on program start
+clear_console()
+
 # Print 'Caesar Cipher' logo
 print(logo)
 
-# Prompt user for cipher direction, text to encode/decode, and shift amount
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
-text = input("Type your message:\n").lower()
-# The '% 26' accounts for whether the supplied shift amount is greater than 26
-shift = int(input("Type the shift number:\n")) % 26
+should_continue = True
+while should_continue:
+    # Prompt user for cipher direction, text to encode/decode, and shift amount
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+    text = input("Type your message:\n").lower()
+    # The '% 26' accounts for whether the supplied shift amount is greater than 26
+    shift = int(input("Type the shift number:\n")) % 26
 
-# TODO-4: Can you figure out a way to ask the user if they want to restart the cipher program?
-# e.g. Type 'yes' if you want to go again. Otherwise type 'no'.
-# If they type 'yes' then ask them for the direction/text/shift again and call the caesar() function again?
-# Hint: Try creating a while loop that continues to execute the program if the user types 'yes'.
+    caesar(direction, text, shift)
 
-caesar(direction, text, shift)
+    # Prompt user to encode or decode another message. If they answer 'no', break the while-loop and exit the program
+    result = input(
+        "Type 'yes' if you want to go again. Otherwise, type 'no'.\n"
+    ).lower()
+    if result == "no":
+        should_continue = False
+        print("Goodbye")
